@@ -351,18 +351,15 @@ public class Funciones
 				matriz2[col][fila] = matriz1[fila][col];
 	}
 
-	public static void multiplicarMatrices(int[][] matriz1, int[][] matriz2, int[][] matrizFinal)
+	public static int[][] multiplicarMatrices(int[][] matriz1, int[][] matriz2)
 	{
-		int res = 0;
+		int [][] matrizFinal = new int [matriz1.length][matriz2[0].length];
+		
 		for (int colF = 0; colF < matrizFinal[0].length; colF++)
-		{
 			for (int fila = 0; fila < matriz1.length; fila++)
-			{
 				for (int col = 0; col < matriz1[0].length; col++)
-					res = res + (matriz1[fila][col] * matriz2[col][colF]);
-				matrizFinal[fila][colF] = res;
-				res = 0;
-			}
-		}
+					matrizFinal[fila][colF] += (matriz1[fila][col] * matriz2[col][colF]);
+		
+		return matrizFinal;
 	}
 }

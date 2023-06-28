@@ -28,15 +28,13 @@ public class Ej6_10
 
 		do
 		{
-			System.out.println("Introduzca el número de columnas de la segunda matriz:"); //Las filas son iguales por lo que no se pide
+			//Las filas son iguales por lo que no se pide
+			System.out.println("Introduzca el número de columnas de la segunda matriz:");
 			col2 = sc.nextInt();
 		} while (col2 < 1);
 		
 		int [][] matriz2 = new int [col][col2];
 		Funciones.rellenarMatriz(matriz2);
-		
-		int [][] matrizFinal = new int [fil][col2];
-		Funciones.multiplicarMatrices(matriz1, matriz2, matrizFinal);
 
 		System.out.println(" ~ Matriz A ~");
 		Funciones.mostrarMatriz(matriz1);
@@ -44,7 +42,7 @@ public class Ej6_10
 		Funciones.mostrarMatriz(matriz2);
 		
 		System.out.println("\n ~ Matriz resultante ~");
-		Funciones.mostrarMatriz(matrizFinal);
+		Funciones.mostrarMatriz(Funciones.multiplicarMatrices(matriz1, matriz2));
 	}
 
 }
