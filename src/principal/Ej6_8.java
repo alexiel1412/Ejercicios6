@@ -25,7 +25,7 @@ public class Ej6_8
 		
 		double [][] matriz = new double [tam][tam];
 
-		Funciones.rellenarMatrizRNReducido(matriz);
+		Funciones.rellenarMatriz(matriz);
 
 		Funciones.mostrarMatriz(matriz);
 		

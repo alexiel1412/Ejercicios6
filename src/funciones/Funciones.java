@@ -190,16 +190,34 @@ public class Funciones
 		}
 	}
 	
-	public static void compararrMatrices(int matriz1[][], int matriz2[][])
+	public static void compararrMatricesTranspuesta(int matriz1[][], int matriz2[][])
 	{
 		// TODO Auto-generated method stub
-		System.out.printf("         Matriz A\tMatriz B:\n");
+		System.out.printf("             Matriz A\t    Matriz B:\n");
 		for (int fila = 0; fila < matriz1.length; fila++)
 		{
 			for (int col = 0; col < matriz1[0].length; col++)
 			{
-				System.out.printf("(%d,%d) %d\t%d\n", fila, col, matriz1[fila][col], matriz2[fila][col]);
+				System.out.printf("(%d,%d)\t\t%d \t\t%d\n", fila, col, matriz1[fila][col], matriz2[fila][col]);
+				// System.out.printf("(%d,%d)\t\t%d \t\t(%d,%d)\t%d\n",
+				// 		fila, col, matriz1[fila][col], matriz2[matriz2.length - 1 - fila], col, matriz2[matriz2.length - 1 - fila][col]);
+	
 			}
+			System.out.println("~ ~ ~   ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
+		}
+	}
+	
+	public static void compararrMatrices(int matriz1[][], int matriz2[][])
+	{
+		// TODO Auto-generated method stub
+		System.out.printf("             Matriz A\t    Matriz B:\n");
+		for (int fila = 0; fila < matriz1.length; fila++)
+		{
+			for (int col = 0; col < matriz1[0].length; col++)
+			{
+				System.out.printf("(%d,%d)\t\t%d \t\t%d\n", fila, col, matriz1[fila][col], matriz2[fila][col]);
+			}
+			System.out.println("~ ~ ~   ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
 		}
 	}
 	
@@ -211,7 +229,7 @@ public class Funciones
 		{
 			for (int col = 0; col < matriz1[0].length; col++)
 			{
-				System.out.printf("(%d,%d) %.2f\t%.2f\n", fila, col, matriz1[fila][col], matriz2[fila][col]);
+				System.out.printf("(%d,%d) %.2f \t%.2f\n", fila, col, matriz1[fila][col], matriz2[fila][col]);
 			}
 		}
 	}
@@ -316,10 +334,35 @@ public class Funciones
 	{
 		double res = 0;
 
-		for (int fila = 0; fila < matriz.length; fila++)
-		{
-		}
-		// TODO Auto-generated method stub
+		res = ((matriz[0][0] * matriz[1][1] * matriz[2][2]) +
+			   (matriz[1][0] * matriz[2][1] * matriz[0][2]) +
+			   (matriz[2][0] * matriz[0][1] * matriz[1][2]))
+				                    -
+			  ((matriz[0][2] * matriz[1][1] * matriz[2][0]) +
+			   (matriz[1][2] * matriz[2][1] * matriz[0][0]) +
+			   (matriz[2][2] * matriz[0][1] * matriz[1][0]));
 		return res;
+	}
+
+	public static void rellenarMatrizTranspuesta(double[][] matriz1, double[][] matriz2)
+	{
+		for (int fila = 0; fila < matriz1.length; fila++)
+			for (int col = 0; col < matriz1[0].length; col++)
+				matriz2[col][fila] = matriz1[fila][col];
+	}
+
+	public static void multiplicarMatrices(int[][] matriz1, int[][] matriz2, int[][] matrizFinal)
+	{
+		int res = 0;
+		for (int colF = 0; colF < matrizFinal[0].length; colF++)
+		{
+			for (int fila = 0; fila < matriz1.length; fila++)
+			{
+				for (int col = 0; col < matriz1[0].length; col++)
+					res = res + (matriz1[fila][col] * matriz2[col][colF]);
+				matrizFinal[fila][colF] = res;
+				res = 0;
+			}
+		}
 	}
 }
